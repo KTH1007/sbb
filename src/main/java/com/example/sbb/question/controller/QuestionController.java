@@ -6,6 +6,7 @@ import com.example.sbb.question.domain.QuestionForm;
 import com.example.sbb.question.service.QuestionService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -24,9 +25,9 @@ public class QuestionController {
     }
 
     @GetMapping("/list")
-    public String list(Model model) {
-        List<Question> questionList = questionService.getList();
-        model.addAttribute("questionList", questionList);
+    public String list(Model model, @RequestParam(value = "page", defaultValue = "0") int page) {
+        Page<Question> paging = questionService.getList(page);
+        model.addAttribute("paging", paging);
         return "question_list";
     }
 
