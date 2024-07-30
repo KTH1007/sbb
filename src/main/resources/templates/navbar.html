@@ -1,4 +1,5 @@
-<nav th:fragment="navbarFragment" class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+<nav th:fragment="navbarFragment" class="navbar navbar-expand-lg navbar-light bg-light border-bottom"
+     xmlns:sec="http://www.w3.org/1999/xhtml">
     <div class="container-fluid">
         <!-- SBB 클릭 시 메인 페이지 이동 -->
         <a class="navbar-brand" href="/">SBB</a>
@@ -10,7 +11,8 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">로그인</a>
+                    <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/member/login}">로그인</a>
+                    <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/member/logout}">로그아웃</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/member/signup}">회원가입</a>
