@@ -32,4 +32,12 @@ public class Answer {
     private Member author;
 
     private LocalDateTime modifyDate;
+
+    public void modify(String newContent) {
+        if (newContent == null || newContent.isEmpty()) {
+            throw new IllegalArgumentException("Content cannot be null or empty");
+        }
+        this.content = newContent;
+        this.modifyDate = LocalDateTime.now();
+    }
 }
