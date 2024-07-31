@@ -42,4 +42,8 @@ public class AnswerService {
         answer.modify(content);
         answerRepository.save(answer);
     }
+
+    public void delete(Answer answer) {
+        answerRepository.delete(answer);
+    }
 }
