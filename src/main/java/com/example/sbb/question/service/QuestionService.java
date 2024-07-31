@@ -52,4 +52,8 @@ public class QuestionService {
         questionRepository.save(question);
     }
 
+    public void modify(Question question, String subject, String content) {
+        question.modify(subject, content);
+        questionRepository.save(question);
+    }
 }

@@ -36,4 +36,18 @@ public class Question {
     private Member author;
 
     private LocalDateTime modifyDate;
+
+    // 상태 변경 메서드
+    public void modify(String newSubject, String newContent) {
+        // 검증 로직
+        if (newSubject == null || newSubject.isEmpty()) {
+            throw new IllegalArgumentException("Subject cannot be null or empty");
+        }
+        if (newContent == null || newContent.isEmpty()) {
+            throw new IllegalArgumentException("Content cannot be null or empty");
+        }
+        this.subject = newSubject;
+        this.content = newContent;
+        this.modifyDate = LocalDateTime.now();
+    }
 }

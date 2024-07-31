@@ -2,11 +2,13 @@ package com.example.sbb.question.domain;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
-import lombok.Builder;
-import lombok.Getter;
+import lombok.*;
 
 @Getter
-@Builder
+@Builder()
+@AllArgsConstructor
+@NoArgsConstructor
+@Setter
 public class QuestionForm {
     @NotEmpty(message = "제목은 필수 항목입니다.")
     @Size(max = 200)
@@ -14,4 +16,9 @@ public class QuestionForm {
 
     @NotEmpty(message = "내용은 필수 항목입니다.")
     private String content;
+
+    public void changeSubjectAndContent(String subject, String content) {
+        this.subject = subject;
+        this.content = content;
+    }
 }
