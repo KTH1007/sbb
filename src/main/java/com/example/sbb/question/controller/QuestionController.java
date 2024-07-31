@@ -17,7 +17,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
-import java.util.List;
 
 @RequestMapping("/question")
 @Controller
@@ -55,6 +54,6 @@ public class QuestionController {
         }
         Member member = memberService.getMember(principal.getName());
         questionService.create(questionForm.getSubject(), questionForm.getContent(), member);
-        return "redirect:/question/list";
+        return "redirect:/question_list";
     }
 }
