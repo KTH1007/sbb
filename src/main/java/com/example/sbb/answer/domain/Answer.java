@@ -1,5 +1,6 @@
 package com.example.sbb.answer.domain;
 
+import com.example.sbb.member.domain.Member;
 import com.example.sbb.question.domain.Question;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -26,4 +27,7 @@ public class Answer {
 
     @ManyToOne
     private Question question;
+
+    @ManyToOne
+    private Member author;
 }

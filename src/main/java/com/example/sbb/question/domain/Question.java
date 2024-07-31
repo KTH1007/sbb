@@ -1,6 +1,7 @@
 package com.example.sbb.question.domain;
 
 import com.example.sbb.answer.domain.Answer;
+import com.example.sbb.member.domain.Member;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -30,4 +31,7 @@ public class Question {
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
     private List<Answer> answerList;
+
+    @ManyToOne
+    private Member author;
 }

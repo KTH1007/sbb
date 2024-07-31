@@ -1,6 +1,7 @@
 package com.example.sbb.question.service;
 
 import com.example.sbb.global.exception.DataNotFoundException;
+import com.example.sbb.member.domain.Member;
 import com.example.sbb.question.domain.Question;
 import com.example.sbb.question.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,11 +42,12 @@ public class QuestionService {
         }
     }
 
-    public void create(String subject, String content) {
+    public void create(String subject, String content, Member member) {
         Question question = Question.builder()
                 .subject(subject)
                 .content(content)
                 .createDate(LocalDateTime.now())
+                .author(member)
                 .build();
         questionRepository.save(question);
     }
