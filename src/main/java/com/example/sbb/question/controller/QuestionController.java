@@ -58,7 +58,7 @@ public class QuestionController {
         }
         Member member = memberService.getMember(principal.getName());
         questionService.create(questionForm.getSubject(), questionForm.getContent(), member);
-        return "redirect:/question_list";
+        return "redirect:/question/list";
     }
 
 
