@@ -48,7 +48,11 @@ public class AnswerService {
     }
 
     public void vote(Answer answer, Member member) {
-        answer.getVoter().add(member);
+        if (answer.getVoter().contains(member)) {
+            answer.getVoter().add(member);
+        } else {
+            answer.getVoter().remove(member);
+        }
         answerRepository.save(answer);
     }
 }

@@ -19,7 +19,8 @@
             </div>
             <div class="my-3">
                 <a href="javascript:void(0);" class="recommend btn btn-sm btn-outline-secondary"
-                   th:data-uri="@{|/question/vote/${question.id}|}">
+                   th:data-uri="@{|/question/vote/${question.id}|}"
+                   th:data-voted="${#lists.contains(question.voter, #authentication.principal)}">
                     추천
                     <span class="badge rounded-pill bg-success" th:text="${#lists.size(question.voter)}"></span>
                 </a>
@@ -54,7 +55,8 @@
             </div>
             <div class="my-3">
                 <a href="javascript:void(0);" class="recommend btn btn-sm btn-outline-secondary"
-                   th:data-uri="@{|/answer/vote/${answer.id}|}">
+                   th:data-uri="@{|/answer/vote/${answer.id}|}"
+                   th:data-voted="${#lists.contains(answer.voter, #authentication.principal)}">
                     추천
                     <span class="badge rounded-pill bg-success" th:text="${#lists.size(answer.voter)}"></span>
                 </a>
@@ -92,9 +94,8 @@
     const recommend_elements = document.getElementsByClassName("recommend");
     Array.from(recommend_elements).forEach(function (element) {
         element.addEventListener('click', function () {
-            if (confirm("정말로 추천하시겠습니까?")) {
-                location.href = this.dataset.uri;
-            };
+            const voted = this.getAttribute('data-voted') === 'true';
+            location.href = this.getAttribute('data-uri');
         });
     });
 </script>

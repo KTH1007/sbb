@@ -107,5 +107,4 @@ public class QuestionController {
         questionService.vote(question, member);
         return String.format("redirect:/question/detail/%s", id);
     }
-
 }

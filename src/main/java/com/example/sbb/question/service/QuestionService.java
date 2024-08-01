@@ -62,7 +62,11 @@ public class QuestionService {
     }
 
     public void vote(Question question, Member member) {
-        question.getVoter().add(member);
+        if (question.getVoter().contains(member)) {
+            question.getVoter().remove(member);
+        } else {
+            question.getVoter().add(member);
+        }
         questionRepository.save(question);
     }
 }
