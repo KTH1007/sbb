@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Getter
 @Builder(toBuilder = true)
@@ -40,4 +41,7 @@ public class Answer {
         this.content = newContent;
         this.modifyDate = LocalDateTime.now();
     }
+
+    @ManyToMany
+    Set<Member> voter;
 }
