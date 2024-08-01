@@ -19,7 +19,7 @@ public class AnswerService {
     @Autowired
     private final AnswerRepository answerRepository;
 
-    public void create(Question question, String content, Member author) {
+    public Answer create(Question question, String content, Member author) {
         Answer answer = Answer.builder()
                 .content(content)
                 .createDate(LocalDateTime.now())
@@ -27,6 +27,7 @@ public class AnswerService {
                 .author(author)
                 .build();
         answerRepository.save(answer);
+        return answer;
     }
 
     public Answer getAnswer(Integer id) {
